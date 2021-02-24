@@ -1,0 +1,50 @@
+import java.io.IOException;
+import java.net.*;
+
+
+
+public class MyGet {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	       String data = "name=wm_command+value=890";
+	       URL url = null;
+		try {
+			url = new URL("http://192.168.0.12:13579/commands.html");
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	       HttpURLConnection con;
+		try {
+			con = (HttpURLConnection) url.openConnection();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	       try {
+			con.setRequestMethod("POST");
+		} catch (ProtocolException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	       con.setDoOutput(true);
+	       try {
+			con.getOutputStream().write(data.getBytes("UTF-8"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	       try {
+			con.getInputStream();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
+
+	}
+
+}
